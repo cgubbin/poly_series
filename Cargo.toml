@@ -1,0 +1,64 @@
+[package]
+name = "polynomial_series"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Polynomial series handling interfaces"
+license = "MIT"
+
+[lib]
+name = "polynomial_series"
+path = "src/lib.rs"
+
+[dependencies]
+ndarray = {version = "0.17.2", optional = true}
+ndarray-linalg = { version = "0.18.1", optional = true }
+num-traits = "0.2.19"
+serde = { version = "1.0.228", optional = true , features=["derive"]}
+thiserror = "2.0.18"
+
+[features]
+default = []
+serde = ["dep:serde"]
+linalg = ["dep:ndarray", "dep:ndarray-linalg"]
+
+linalg-openblas-static = [
+    "linalg",
+    "ndarray-linalg/openblas-static",
+]
+
+linalg-openblas-system = [
+    "linalg",
+    "ndarray-linalg/openblas-system",
+]
+
+linalg-netlib-static = [
+    "linalg",
+    "ndarray-linalg/netlib-static",
+]
+
+linalg-netlib-system = [
+    "linalg",
+    "ndarray-linalg/netlib-system",
+]
+
+linalg-intel-mkl-static = [
+    "linalg",
+    "ndarray-linalg/intel-mkl-static",
+]
+
+linalg-intel-mkl-system = [
+    "linalg",
+    "ndarray-linalg/intel-mkl-system",
+]
+
+[dev-dependencies]
+
+
+[profile.dev]
+debug = true
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+
