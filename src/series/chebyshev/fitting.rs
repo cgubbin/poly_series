@@ -70,7 +70,7 @@ where
         validate_fit_data(xs, ys, degree)?;
         validate_domain(&domain)?;
 
-        let design = design_matrix(xs, degree, &domain);
+        let design = Self::design_matrix(xs, degree, &domain);
         let rhs = Array1::from_vec(ys.to_vec());
 
         fit_report_from_design(xs, ys, degree, domain, design.clone(), design, rhs)
@@ -97,7 +97,7 @@ where
         validate_weights(xs, weights)?;
         validate_domain(&domain)?;
 
-        let unweighted_design = design_matrix(xs, degree, &domain);
+        let unweighted_design = Self::design_matrix(xs, degree, &domain);
         let mut weighted_design = unweighted_design.clone();
         let mut weighted_rhs = Array1::from_vec(ys.to_vec());
 
@@ -133,7 +133,7 @@ where
     where
         E: Float + FromPrimitive + Scalar<Real = E> + Lapack,
     {
-        let unweighted_design = design_matrix(xs, degree, &domain);
+        let unweighted_design = Self::design_matrix(xs, degree, &domain);
 
         fit_report_from_design(
             xs,
@@ -144,6 +144,24 @@ where
             fitted_design,
             fitted_rhs,
         )
+    }
+
+    pub fn design_matrix(xs: &[E], degree: usize, domain: &Range<E>) -> Array2<E>
+    where
+        E: Float + FromPrimitive,
+    {
+        let mut matrix = Array2::<E>::zeros((xs.len(), degree + 1));
+
+        for (row, &x) in xs.iter().enumerate() {
+            let t = to_scaled(x, domain);
+            let basis = chebyshev_basis_values(t, degree);
+
+            for (col, value) in basis.into_iter().enumerate() {
+                matrix[[row, col]] = value;
+            }
+        }
+
+        matrix
     }
 }
 
@@ -298,24 +316,6 @@ where
     }
 
     Ok(lower..upper)
-}
-
-fn design_matrix<E>(xs: &[E], degree: usize, domain: &Range<E>) -> Array2<E>
-where
-    E: Float + FromPrimitive,
-{
-    let mut matrix = Array2::<E>::zeros((xs.len(), degree + 1));
-
-    for (row, &x) in xs.iter().enumerate() {
-        let t = to_scaled(x, domain);
-        let basis = chebyshev_basis_values(t, degree);
-
-        for (col, value) in basis.into_iter().enumerate() {
-            matrix[[row, col]] = value;
-        }
-    }
-
-    matrix
 }
 
 fn chebyshev_basis_values<E>(t: E, degree: usize) -> Vec<E>
