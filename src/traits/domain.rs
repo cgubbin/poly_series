@@ -35,6 +35,7 @@ pub trait PolynomialDomain<E: Float + FromPrimitive>: PolynomialSeries<E> {
     /// Map a scaled coordinate back to the physical coordinate.
     ///
     /// For Chebyshev-like bases this usually maps `[-1, 1]` to `[a, b]`.
+    #[allow(clippy::wrong_self_convention)]
     fn from_scaled(&self, t: E) -> E {
         from_scaled(t, &(self.lower_bound()..self.upper_bound()))
     }

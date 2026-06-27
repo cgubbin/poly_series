@@ -124,7 +124,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{InterpolatePolynomialSeries, PolynomialCoefficients, PolynomialSeries};
+    use crate::{InterpolatePolynomialSeries, PolynomialSeries};
 
     const EPS: f64 = 1.0e-10;
 

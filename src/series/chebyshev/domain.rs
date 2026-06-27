@@ -1,7 +1,4 @@
-use crate::{
-    PolynomialDomain, PolynomialSeries,
-    scaling::{from_scaled, to_scaled},
-};
+use crate::PolynomialDomain;
 
 use super::{ChebyshevError, ChebyshevSeries};
 

@@ -1,6 +1,6 @@
 use crate::{PolynomialCoefficients, PolynomialSeries};
 
-use super::{CSeries, ChebyshevError, ChebyshevSeries};
+use super::{ChebyshevError, ChebyshevSeries};
 
 use num_traits::{Float, FromPrimitive};
 use std::ops::Range;

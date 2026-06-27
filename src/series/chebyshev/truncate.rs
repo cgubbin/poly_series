@@ -1,4 +1,4 @@
-use crate::{PolynomialApproximation, PolynomialSeries};
+use crate::PolynomialApproximation;
 
 use super::ChebyshevSeries;
 
@@ -23,7 +23,7 @@ impl<E: Float + FromPrimitive> PolynomialApproximation<E> for ChebyshevSeries<E>
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{PolynomialApproximation, PolynomialCoefficients, PolynomialSeries};
+    use crate::{PolynomialApproximation, PolynomialSeries};
 
     fn series(coefficients: Vec<f64>) -> ChebyshevSeries<f64> {
         ChebyshevSeries::new(coefficients, 10.0..20.0).unwrap()

@@ -3,7 +3,7 @@ use crate::{PolynomialRoots, PolynomialSeries};
 
 use super::{ChebyshevError, ChebyshevSeries};
 
-use ndarray::{Array1, Array2};
+use ndarray::Array2;
 use ndarray_linalg::{EigVals, Lapack, Scalar};
 use num_traits::{Float, FromPrimitive};
 
@@ -96,8 +96,8 @@ where
         let leading = coefficients[degree];
 
         for row in 0..degree {
-            matrix[[row, degree - 1]] = matrix[[row, degree - 1]]
-                - coefficients[row] / two / leading * scale[row] / scale[degree - 1];
+            matrix[[row, degree - 1]] -=
+                -coefficients[row] / two / leading * scale[row] / scale[degree - 1];
         }
 
         Ok(matrix)

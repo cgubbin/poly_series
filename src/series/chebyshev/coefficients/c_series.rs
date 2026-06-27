@@ -19,14 +19,14 @@ use super::ZSeries;
 /// The zero polynomial is represented as `[0]`, not as an empty array.
 #[derive(Clone, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub(crate) struct CSeries<E>(Vec<E>);
+pub struct CSeries<E>(Vec<E>);
 
 impl<E> From<ZSeries<E>> for CSeries<E>
 where
     E: Float,
 {
     fn from(value: ZSeries<E>) -> Self {
-        let n = (value.len() + 1) / 2;
+        let n = value.len().div_ceil(2);
         let two = E::one() + E::one();
 
         let mut coefficients = Vec::with_capacity(n);

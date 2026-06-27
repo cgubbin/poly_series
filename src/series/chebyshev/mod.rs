@@ -174,9 +174,7 @@ impl<E> ChebyshevSeries<E> {
         }
 
         // Constant coefficient.
-        d[0] = if degree == 1 {
-            c[1]
-        } else if degree == 2 {
+        d[0] = if (degree == 1) || (degree == 2) {
             c[1]
         } else {
             c[1] + d[2] / two

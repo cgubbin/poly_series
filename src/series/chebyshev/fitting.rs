@@ -1,4 +1,4 @@
-use crate::{FitPolynomialSeries, FitReport, PolynomialSeries, scaling::to_scaled};
+use crate::{FitPolynomialSeries, FitReport, scaling::to_scaled};
 
 use super::{ChebyshevError, ChebyshevSeries};
 
@@ -105,10 +105,10 @@ where
             let scale = Scalar::sqrt(weights[row]);
 
             for col in 0..=degree {
-                weighted_design[[row, col]] = weighted_design[[row, col]] * scale;
+                weighted_design[[row, col]] *= scale;
             }
 
-            weighted_rhs[row] = weighted_rhs[row] * scale;
+            weighted_rhs[row] *= scale;
         }
 
         fit_report_from_design(
@@ -320,7 +320,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{FitPolynomialSeries, PolynomialCoefficients, PolynomialSeries};
+    use crate::{FitPolynomialSeries, PolynomialSeries};
 
     const EPS: f64 = 1.0e-9;
 
