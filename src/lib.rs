@@ -169,7 +169,7 @@
 #![allow(dead_code)]
 
 mod error;
-mod scaling;
+pub mod scaling;
 mod series;
 mod traits;
 
