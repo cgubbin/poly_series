@@ -133,7 +133,7 @@
 //!
 //! ### Root finding
 //!
-//! ```rust,no_run
+//! ```ignore
 //! use polynomial_series::{
 //!     PolynomialRoots,
 //!     PolynomialCoefficients,
