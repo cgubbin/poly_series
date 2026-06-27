@@ -97,47 +97,11 @@ where
 
         for row in 0..degree {
             matrix[[row, degree - 1]] -=
-                -coefficients[row] / two / leading * scale[row] / scale[degree - 1];
+                coefficients[row] / two / leading * scale[row] / scale[degree - 1];
         }
 
         Ok(matrix)
     }
-
-    // fn companion_matrix(&self) -> Result<Array2<E>, ChebyshevError> {
-    //     let degree = self.degree();
-
-    //     debug_assert!(degree >= 2);
-
-    //     let coefficients = self.coefficients.as_slice();
-
-    //     if coefficients[degree] == E::zero() {
-    //         return Err(ChebyshevError::DegeneratePolynomial);
-    //     }
-
-    //     let two = E::from_f64(2.0).expect("2.0 should be representable");
-    //     let half = E::one() / two;
-    //     let inv_sqrt_two = Float::sqrt(half);
-
-    //     let mut matrix = Array2::<E>::zeros((degree, degree));
-
-    //     for index in 0..degree - 1 {
-    //         let value = if index == 0 { inv_sqrt_two } else { half };
-
-    //         matrix[[index, index + 1]] = value;
-    //         matrix[[index + 1, index]] = value;
-    //     }
-
-    //     let mut scale = Vec::with_capacity(degree);
-    //     scale.push(E::one());
-    //     scale.extend(std::iter::repeat(inv_sqrt_two).take(degree - 1));
-
-    //     for row in 0..degree {
-    //         matrix[[row, degree - 1]] = matrix[[row, degree - 1]]
-    //             - coefficients[row] / two / coefficients[degree] * scale[row] / scale[degree - 1];
-    //     }
-
-    //     Ok(matrix)
-    // }
 }
 
 #[cfg(test)]

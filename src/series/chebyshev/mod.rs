@@ -61,7 +61,7 @@
 //! # Example
 //!
 //! ```
-//! use polynomial_series::{ChebyshevSeries, PolynomialSeries};
+//! use poly_series::{ChebyshevSeries, PolynomialSeries};
 //!
 //! let p = ChebyshevSeries::new(
 //!     vec![1.0, 2.0, 3.0],

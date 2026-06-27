@@ -69,7 +69,7 @@
 //! ### Constructing a polynomial
 //!
 //! ```rust
-//! use polynomial_series::{
+//! use poly_series::{
 //!     PolynomialSeries,
 //!     PolynomialCoefficients,
 //!     ChebyshevSeries,
@@ -86,7 +86,7 @@
 //! ### Differentiation
 //!
 //! ```rust
-//! # use polynomial_series::{
+//! # use poly_series::{
 //! #     PolynomialSeries,
 //! #     PolynomialCoefficients,
 //! #     ChebyshevSeries,
@@ -102,7 +102,7 @@
 //! ### Integration
 //!
 //! ```rust
-//! # use polynomial_series::{
+//! # use poly_series::{
 //! #     PolynomialSeries,
 //! #     PolynomialIntegrals,
 //! #     PolynomialCoefficients,
