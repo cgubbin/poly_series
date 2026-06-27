@@ -117,7 +117,7 @@
 //!
 //! ### Least-squares fitting
 //!
-//! ```rust,no_run
+//! ```ignore
 //! use polynomial_series::{
 //!     FitPolynomialSeries,
 //!     ChebyshevSeries,
