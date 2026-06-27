@@ -1,4 +1,4 @@
-# polynomial_series
+# poly_series
 
 ## Polynomial Series
 
@@ -71,7 +71,7 @@ Available backends include
 #### Constructing a polynomial
 
 ```rust
-use polynomial_series::{
+use poly_series::{
     PolynomialSeries,
     PolynomialCoefficients,
     ChebyshevSeries,
