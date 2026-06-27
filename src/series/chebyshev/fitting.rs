@@ -121,6 +121,30 @@ where
             weighted_rhs,
         )
     }
+
+    pub fn fit_report_from_design_on_domain(
+        xs: &[E],
+        ys: &[E],
+        degree: usize,
+        domain: Range<E>,
+        fitted_design: Array2<E>,
+        fitted_rhs: Array1<E>,
+    ) -> Result<FitReport<E, Self>, ChebyshevError>
+    where
+        E: Float + FromPrimitive + Scalar<Real = E> + Lapack,
+    {
+        let unweighted_design = design_matrix(xs, degree, &domain);
+
+        fit_report_from_design(
+            xs,
+            ys,
+            degree,
+            domain,
+            unweighted_design,
+            fitted_design,
+            fitted_rhs,
+        )
+    }
 }
 
 fn fit_report_from_design<E>(
