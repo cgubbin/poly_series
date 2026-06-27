@@ -97,7 +97,7 @@ use crate::{
     scaling::{is_valid_domain, to_scaled},
 };
 use coefficients::CSeries;
-use error::ChebyshevError;
+pub use error::ChebyshevError;
 
 use num_traits::{Float, FromPrimitive};
 

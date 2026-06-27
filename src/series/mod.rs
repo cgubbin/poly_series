@@ -1,3 +1,3 @@
 mod chebyshev;
 
-pub use chebyshev::ChebyshevSeries;
+pub use chebyshev::{ChebyshevError, ChebyshevSeries};

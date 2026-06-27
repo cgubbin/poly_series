@@ -173,7 +173,7 @@ mod scaling;
 mod series;
 mod traits;
 
-pub use series::ChebyshevSeries;
+pub use series::{ChebyshevError, ChebyshevSeries};
 pub use traits::{
     ConvertPolynomialBasis, PolynomialApproximation, PolynomialCoefficients, PolynomialDomain,
     PolynomialEvaluateMany, PolynomialIntegrals, PolynomialSeries,
